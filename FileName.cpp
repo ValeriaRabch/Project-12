@@ -7,6 +7,14 @@ struct Student {
 	int marks[5];
 };
 
+struct Data {
+	int day;
+	int month;
+	int year;
+};
+
+
+
 void Print(Student* man, int size) {
 	for (int i = 0; i < size; i++) {
 
@@ -179,6 +187,10 @@ int main() {
 		}
 	}
 	delete[] man;*/
+
+	//завдання 2
+	int size = 5;
+	Man* people = new Man[size];
 
 	return 0;
 }

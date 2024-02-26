@@ -1,2 +1,4 @@
 ﻿  FileName.cpp
+D:\Valeria\Project\Project12\Project12\FileName.cpp(357,46): warning C4101: 'data': unreferenced local variable
+D:\Valeria\Project\Project12\Project12\FileName.cpp(357,34): warning C4101: 'years': unreferenced local variable
   Project12.vcxproj -> D:\Valeria\Project\Project12\x64\Debug\Project12.exe

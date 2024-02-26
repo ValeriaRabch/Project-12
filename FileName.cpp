@@ -216,7 +216,7 @@ Man* listShenninniks(Man man[], int size, int month, int& size1) {
 	return people;
 }
 
-Man* AddMan(Man man[], int& size, char surname[], char name[], int years, Data data) {
+Man* AddMan(Man man[], int& size, Man man2) {
 	Man* people = new Man[size + 1];
 	for (int i = 0; i < size; i++) {
 		strcpy(people[i].surname, man[i].surname);
@@ -224,10 +224,10 @@ Man* AddMan(Man man[], int& size, char surname[], char name[], int years, Data d
 		people[i].years = man[i].years;
 		people[i].data = man[i].data;
 	}
-	strcpy(people[size].surname, surname);
-	strcpy(people[size].name, name);
-	people[size].years = years;
-	people[size].data = data;
+	strcpy(people[size].surname, man2.surname);
+	strcpy(people[size].name, man2.name);
+	people[size].years = man2.years;
+	people[size].data = man2.data;
 
 	size++;
 	delete[] man;
@@ -376,11 +376,11 @@ int main() {
 			PrintMan(shenninniks, size1);
 		}
 		if (a == 5) {
-			cout << "Enter surname "; cin >> surname;
-			cout << "Enter name "; cin >> name;
-			cout << "Enter years "; cin >> years;
-			cout << "Enter your birthday date "; cin >> data.day >> data.month >> data.year;
-			people = AddMan(people, size, surname, name, years, data);
+			cout << "Enter surname "; cin >> man.surname;
+			cout << "Enter name "; cin >> man.name;
+			cout << "Enter years "; cin >> man.years;
+			cout << "Enter your birthday date "; cin >> man.data.day >> man.data.month >> man.data.year;
+			people = AddMan(people, size, man);
 		}
 		if (a == 6) {
 			cout << "Which man?"; cin >> index;

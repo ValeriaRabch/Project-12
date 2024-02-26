@@ -416,5 +416,6 @@ int main() {
 			people = Change(people, size, man, index - 1);
 		}
 	}
+	delete[] people, shenninniks, searching;
 	return 0;
 }

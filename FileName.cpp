@@ -216,6 +216,24 @@ Man* listShenninniks(Man man[], int size, int month, int& size1) {
 	return people;
 }
 
+Man* AddMan(Man man[], int& size, char surname[], char name[], int years, Data data) {
+	Man* people = new Man[size + 1];
+	for (int i = 0; i < size; i++) {
+		strcpy(people[i].surname, man[i].surname);
+		strcpy(people[i].name, man[i].name);
+		people[i].years = man[i].years;
+		people[i].data = man[i].data;
+	}
+	strcpy(people[size].surname, surname);
+	strcpy(people[size].name, name);
+	people[size].years = years;
+	people[size].data = data;
+
+	size++;
+	delete[] man;
+	return people;
+}
+
 int main() {
 	//завдання 1
 	/*int size = 5;
@@ -286,6 +304,13 @@ int main() {
 			cout << "Enter month"; cin >> month;
 			shenninniks = listShenninniks(people, size, month, size1);
 			PrintMan(shenninniks, size1);
+		}
+		if (a == 5) {
+			cout << "Enter surname "; cin >> surname;
+			cout << "Enter name "; cin >> name;
+			cout << "Enter years "; cin >> years;
+			cout << "Enter your birthday date "; cin >> data.day >> data.month >> data.year;
+			people = AddMan(people, size, surname, name, years, data);
 		}
 	}
 

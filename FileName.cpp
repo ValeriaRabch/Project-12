@@ -186,6 +186,15 @@ Man* SortingSurname(Man man[], int size) {
 	return man;
 }
 
+void PrintMan(Man man[], int size) {
+	for (int i = 0; i < size; i++) {
+		cout << "Surname -" << man[i].surname << endl;
+		cout << "Name -" << man[i].name << endl;
+		cout << "Years -" << man[i].years << endl;
+		cout << "Data birthday -" << man[i].data.day << '.' << man[i].data.month << '.' << man[i].data.year << endl;
+	}
+}
+
 int main() {
 	//завдання 1
 	/*int size = 5;
@@ -248,6 +257,9 @@ int main() {
 		}
 		if (a == 2) {
 			people = SortingSurname(people, size);
+		}
+		if (a == 3) {
+			PrintMan(people, size);
 		}
 	}
 

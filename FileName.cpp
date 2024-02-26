@@ -271,6 +271,26 @@ Man* SearchigName(Man man[], int size, char name[], int& size1) {
 	return people;
 }
 
+Man* SearchigSurname(Man man[], int size, char surname[], int& size1) {
+	size1 = 0; int a = 0;
+	for (int i = 0; i < size; i++) {
+		if (strcmp(man[i].surname, surname) == 0) {
+			size1++;
+		}
+	}
+	Man* people = new Man[size1];
+	for (int i = 0; i < size; i++) {
+		if (strcmp(man[i].surname, surname) == 0) {
+			strcpy(people[a].surname, man[i].surname);
+			strcpy(people[a].name, man[i].name);
+			people[a].years = man[i].years;
+			people[a].data = man[i].data;
+			a++;
+		}
+	}
+	return people;
+}
+
 int main() {
 	//завдання 1
 	/*int size = 5;
@@ -361,6 +381,16 @@ int main() {
 				searching = SearchigName(people, size, name, size1);
 				if (size1 > 0) {
 					PrintMan(searching, size1);
+				}
+			}
+			else {
+				cout << "Enter surname "; cin >> surname;
+				searching = SearchigSurname(people, size, surname, size1);
+				if (size1 > 0) {
+					PrintMan(searching, size1);
+				}
+				else {
+					cout << "This surname is not searched\n";
 				}
 			}
 		}

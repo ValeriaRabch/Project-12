@@ -234,6 +234,23 @@ Man* AddMan(Man man[], int& size, char surname[], char name[], int years, Data d
 	return people;
 }
 
+Man* DeleteMan(Man man[], int& size, int index) {
+	Man* people = new Man[size - 1];
+	int a = 0;
+	for (int i = 0; i < size; i++) {
+		if (i != index) {
+			strcpy(people[a].surname, man[i].surname);
+			strcpy(people[a].name, man[i].name);
+			people[a].years = man[i].years;
+			people[a].data = man[i].data;
+			a++;
+		}
+	}
+	size--;
+	delete[] man;
+	return people;
+}
+
 int main() {
 	//завдання 1
 	/*int size = 5;
@@ -288,7 +305,7 @@ int main() {
 	char surname[20], name[10]; int years; Data data;
 	Fulling(people, size);
 
-	int a = 1; Man* shenninniks = new Man[size]; int month, size1 = 0;
+	int a = 1, index; Man* shenninniks = new Man[size]; int month, size1 = 0;
 	while (a != 9) {
 		cout << "Select\n1 - sorting for name\n2 - sorting for surname\n3 - print\n4 - list shenninniks of the month\n5 - add man\n6 - delete man\n7 - searching\n8 - change\n9 - leave"; cin >> a;
 		if (a == 1) {
@@ -311,6 +328,10 @@ int main() {
 			cout << "Enter years "; cin >> years;
 			cout << "Enter your birthday date "; cin >> data.day >> data.month >> data.year;
 			people = AddMan(people, size, surname, name, years, data);
+		}
+		if (a == 6) {
+			cout << "Which man?"; cin >> index;
+			people = DeleteMan(people, size, index - 1);
 		}
 	}
 

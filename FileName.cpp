@@ -291,6 +291,18 @@ Man* SearchigSurname(Man man[], int size, char surname[], int& size1) {
 	return people;
 }
 
+Man* Change(Man man[], int size, Man people, int index) {
+	for (int i = 0; i < size; i++) {
+		if (i == index) {
+			strcpy(man[i].surname, people.surname);
+			strcpy(man[i].name, people.name);
+			man[i].years = people.years;
+			man[i].data = people.data;
+		}
+	}
+	return man;
+}
+
 int main() {
 	//завдання 1
 	/*int size = 5;
@@ -346,7 +358,7 @@ int main() {
 	Fulling(people, size);
 
 	int a = 1, index; Man* shenninniks = new Man[size]; int month, size1 = 0; bool q;
-	Man* searching = new Man[size1];
+	Man* searching = new Man[size1]; Man man;
 	while (a != 9) {
 		cout << "Select\n1 - sorting for name\n2 - sorting for surname\n3 - print\n4 - list shenninniks of the month\n5 - add man\n6 - delete man\n7 - searching\n8 - change\n9 - leave"; cin >> a;
 		if (a == 1) {
@@ -393,7 +405,16 @@ int main() {
 					cout << "This surname is not searched\n";
 				}
 			}
-		}
 
+		}
+		if (a == 8) {
+			cout << "Which man?"; cin >> index;
+			cout << "Enter surname "; cin >> man.surname;
+			cout << "Enter name "; cin >> man.name;
+			cout << "Enter years "; cin >> man.years;
+			cout << "Enter your birthday date "; cin >> man.data.day >> man.data.month >> man.data.year;
+			people = Change(people, size, man, index - 1);
+		}
+	}
 	return 0;
 }

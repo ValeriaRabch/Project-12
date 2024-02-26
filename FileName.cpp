@@ -351,10 +351,10 @@ int main() {
 	delete[] man;*/
 
 	//завдання 2
-	int size = 5;
+	/*int size = 5;
 	Man* people = new Man[size];
 
-	char surname[20], name[10]; int years; Data data;
+	char surname[20], name[10];
 	Fulling(people, size);
 
 	int a = 1, index; Man* shenninniks = new Man[size]; int month, size1 = 0; bool q;
@@ -416,6 +416,6 @@ int main() {
 			people = Change(people, size, man, index - 1);
 		}
 	}
-	delete[] people, shenninniks, searching;
+	delete[] people, shenninniks, searching;*/
 	return 0;
 }

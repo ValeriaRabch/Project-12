@@ -13,7 +13,11 @@ struct Data {
 	int year;
 };
 
-
+struct Man {
+	char surname[20], name[10];
+	int years;
+	Data data;
+};
 
 void Print(Student* man, int size) {
 	for (int i = 0; i < size; i++) {

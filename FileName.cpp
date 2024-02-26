@@ -195,6 +195,27 @@ void PrintMan(Man man[], int size) {
 	}
 }
 
+Man* listShenninniks(Man man[], int size, int month, int& size1) {
+	size1 = 0;
+	for (int i = 0; i < size; i++) {
+		if (man[i].data.month == month) {
+			size1++;
+		}
+	}
+	Man* people = new Man[size1];
+	int index = 0;
+	for (int i = 0; i < size; i++) {
+		if (man[i].data.month == month) {
+			strcpy(people[index].surname, man[i].surname);
+			strcpy(people[index].name, man[i].name);
+			people[index].years = man[i].years;
+			people[index].data = man[i].data;
+			index++;
+		}
+	}
+	return people;
+}
+
 int main() {
 	//завдання 1
 	/*int size = 5;
@@ -249,7 +270,7 @@ int main() {
 	char surname[20], name[10]; int years; Data data;
 	Fulling(people, size);
 
-	int a = 1;
+	int a = 1; Man* shenninniks = new Man[size]; int month, size1 = 0;
 	while (a != 9) {
 		cout << "Select\n1 - sorting for name\n2 - sorting for surname\n3 - print\n4 - list shenninniks of the month\n5 - add man\n6 - delete man\n7 - searching\n8 - change\n9 - leave"; cin >> a;
 		if (a == 1) {
@@ -260,6 +281,11 @@ int main() {
 		}
 		if (a == 3) {
 			PrintMan(people, size);
+		}
+		if (a == 4) {
+			cout << "Enter month"; cin >> month;
+			shenninniks = listShenninniks(people, size, month, size1);
+			PrintMan(shenninniks, size1);
 		}
 	}
 

@@ -145,6 +145,19 @@ Student* Badly(Student* man, int size, int& size1) {
 	return badly;
 }
 
+Man* Fulling(Man man[], int size) {
+	for (int i = 0; i < size; i++) {
+		cout << "Enter surname "; cin >> man[i].surname;
+		cout << "Enter name "; cin >> man[i].name;
+		cout << "Enter years "; cin >> man[i].years;
+		cout << "Enter your birthday date ";
+		cin >> man[i].data.day;
+		cin >> man[i].data.month;
+		cin >> man[i].data.year;
+	}
+	return man;
+}
+
 int main() {
 	//завдання 1
 	/*int size = 5;
@@ -195,6 +208,9 @@ int main() {
 	//завдання 2
 	int size = 5;
 	Man* people = new Man[size];
+
+	char surname[20], name[10]; int years; Data data;
+	Fulling(people, size);
 
 	return 0;
 }

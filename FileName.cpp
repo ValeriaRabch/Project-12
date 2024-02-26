@@ -53,6 +53,46 @@ Student* ChangeSizeMinus(Student* man, int& size, char surname[], char group[]) 
 	return man2;
 }
 
+Student* Excellent(Student* man, int size, int& size1) {
+	int count = 0; size1 = 0;
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < 5; j++) {
+			if (man[i].marks[j] >= 10) {
+				count++;
+			}
+		}
+		if (count >= 3) {
+			size1++;
+		}
+		count = 0;
+	}
+	if (size1 == 0) {
+		return 0;
+	}
+	Student* excellent = new Student[size1];
+	count = 0; int x = 0;
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < 5; j++) {
+			if (man[i].marks[j] >= 10) {
+				count++;
+			}
+		}
+		if (count >= 3) {
+			strcpy(excellent[x].surname, man[i].surname);
+			strcpy(excellent[x].group, man[i].group);
+			for (int J = 0; J < 5; J++) {
+				excellent[x].marks[J] = man[i].marks[J];
+			}
+			x++;
+		}
+		count = 0;
+		if (x > size1) {
+			break;
+		}
+	}
+	return excellent;
+}
+
 int main() {
 	//завдання 1
 	int size = 5;
@@ -66,7 +106,7 @@ int main() {
 		}
 	}
 
-	int a = 1; char surname[20], group[5];
+	int a = 1; char surname[20], group[5]; int size1 = 5;
 	while (a != 6) {
 		cout << "Select\n1 - print students\n2 - add student\n3 - delete student\n4 - print excellent  students\n5 - print badly students\n6 - leave"; cin >> a;
 		if (a == 1) {
@@ -79,6 +119,15 @@ int main() {
 		}
 		if (a == 3) {
 			man = ChangeSizeMinus(man, size, surname, group);
+		}
+		if (a == 4) {
+			size1 = 5;
+			Student* excellent = new Student[size1];
+			excellent = Excellent(man, size, size1);
+			cout << "Excellent list" << endl;
+			Print(excellent, size1);
+			cout << endl;
+			delete[] excellent;
 		}
 	}
 

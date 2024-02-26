@@ -178,6 +178,7 @@ int main() {
 			delete[] badly;
 		}
 	}
+	delete[] man;
 
 	return 0;
 }

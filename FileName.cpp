@@ -93,6 +93,46 @@ Student* Excellent(Student* man, int size, int& size1) {
 	return excellent;
 }
 
+Student* Badly(Student* man, int size, int& size1) {
+	int count = 0; size1 = 0;
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < 5; j++) {
+			if (man[i].marks[j] < 10) {
+				count++;
+			}
+		}
+		if (count >= 3) {
+			size1++;
+		}
+		count = 0;
+	}
+	if (size1 == 0) {
+		return 0;
+	}
+	Student* badly = new Student[size1];
+	count = 0; int x = 0;
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < 5; j++) {
+			if (man[i].marks[j] < 10) {
+				count++;
+			}
+		}
+		if (count >= 3) {
+			strcpy(badly[x].surname, man[i].surname);
+			strcpy(badly[x].group, man[i].group);
+			for (int J = 0; J < 5; J++) {
+				badly[x].marks[J] = man[i].marks[J];
+			}
+			x++;
+		}
+		count = 0;
+		if (x > size1) {
+			break;
+		}
+	}
+	return badly;
+}
+
 int main() {
 	//завдання 1
 	int size = 5;
@@ -128,6 +168,14 @@ int main() {
 			Print(excellent, size1);
 			cout << endl;
 			delete[] excellent;
+		}
+		if (a == 5) {
+			size1 = 5;
+			Student* badly = new Student[size1];
+			badly = Badly(man, size, size1);
+			cout << "Badly list" << endl;
+			Print(badly, size1);
+			delete[] badly;
 		}
 	}
 

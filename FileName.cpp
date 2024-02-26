@@ -251,6 +251,26 @@ Man* DeleteMan(Man man[], int& size, int index) {
 	return people;
 }
 
+Man* SearchigName(Man man[], int size, char name[], int& size1) {
+	size1 = 0; int a = 0;
+	for (int i = 0; i < size; i++) {
+		if (strcmp(man[i].name, name) == 0) {
+			size1++;
+		}
+	}
+	Man* people = new Man[size1];
+	for (int i = 0; i < size; i++) {
+		if (strcmp(man[i].name, name) == 0) {
+			strcpy(people[a].surname, man[i].surname);
+			strcpy(people[a].name, man[i].name);
+			people[a].years = man[i].years;
+			people[a].data = man[i].data;
+			a++;
+		}
+	}
+	return people;
+}
+
 int main() {
 	//завдання 1
 	/*int size = 5;
@@ -305,7 +325,8 @@ int main() {
 	char surname[20], name[10]; int years; Data data;
 	Fulling(people, size);
 
-	int a = 1, index; Man* shenninniks = new Man[size]; int month, size1 = 0;
+	int a = 1, index; Man* shenninniks = new Man[size]; int month, size1 = 0; bool q;
+	Man* searching = new Man[size1];
 	while (a != 9) {
 		cout << "Select\n1 - sorting for name\n2 - sorting for surname\n3 - print\n4 - list shenninniks of the month\n5 - add man\n6 - delete man\n7 - searching\n8 - change\n9 - leave"; cin >> a;
 		if (a == 1) {
@@ -333,7 +354,16 @@ int main() {
 			cout << "Which man?"; cin >> index;
 			people = DeleteMan(people, size, index - 1);
 		}
-	}
+		if (a == 7) {
+			cout << "Searching acording to\n0 - name\n1 - surname"; cin >> q;
+			if (q == 0) {
+				cout << "Enter name "; cin >> name;
+				searching = SearchigName(people, size, name, size1);
+				if (size1 > 0) {
+					PrintMan(searching, size1);
+				}
+			}
+		}
 
 	return 0;
 }

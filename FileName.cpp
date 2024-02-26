@@ -158,6 +158,20 @@ Man* Fulling(Man man[], int size) {
 	return man;
 }
 
+Man* SortingName(Man man[], int size) {
+	Man q;
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			if (strcmp(man[j].name, man[j + 1].name) == 1) {
+				q = man[j];
+				man[j] = man[j + 1];
+				man[j + 1] = q;
+			}
+		}
+	}
+	return man;
+}
+
 int main() {
 	//завдання 1
 	/*int size = 5;
@@ -211,6 +225,14 @@ int main() {
 
 	char surname[20], name[10]; int years; Data data;
 	Fulling(people, size);
+
+	int a = 1;
+	while (a != 9) {
+		cout << "Select\n1 - sorting for name\n2 - sorting for surname\n3 - print\n4 - list shenninniks of the month\n5 - add man\n6 - delete man\n7 - searching\n8 - change\n9 - leave"; cin >> a;
+		if (a == 1) {
+			people = SortingName(people, size);
+		}
+	}
 
 	return 0;
 }

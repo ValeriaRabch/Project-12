@@ -135,7 +135,7 @@ Student* Badly(Student* man, int size, int& size1) {
 
 int main() {
 	//завдання 1
-	int size = 5;
+	/*int size = 5;
 	Student* man = new Student[size];
 
 	for (int i = 0; i < size; i++) {
@@ -178,7 +178,7 @@ int main() {
 			delete[] badly;
 		}
 	}
-	delete[] man;
+	delete[] man;*/
 
 	return 0;
 }

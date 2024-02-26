@@ -172,6 +172,20 @@ Man* SortingName(Man man[], int size) {
 	return man;
 }
 
+Man* SortingSurname(Man man[], int size) {
+	Man q;
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			if (strcmp(man[j].surname, man[j + 1].surname) == 1) {
+				q = man[j];
+				man[j] = man[j + 1];
+				man[j + 1] = q;
+			}
+		}
+	}
+	return man;
+}
+
 int main() {
 	//завдання 1
 	/*int size = 5;
@@ -231,6 +245,9 @@ int main() {
 		cout << "Select\n1 - sorting for name\n2 - sorting for surname\n3 - print\n4 - list shenninniks of the month\n5 - add man\n6 - delete man\n7 - searching\n8 - change\n9 - leave"; cin >> a;
 		if (a == 1) {
 			people = SortingName(people, size);
+		}
+		if (a == 2) {
+			people = SortingSurname(people, size);
 		}
 	}
 
